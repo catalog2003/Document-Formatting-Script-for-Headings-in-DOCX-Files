@@ -1,0 +1,49 @@
+import docx
+import re
+
+def process_paragraph(paragraph):
+    # Regular expressions for different patterns
+    chapter_pattern = re.compile(r'Chapter (\d+)', re.IGNORECASE)
+    pattern_1 = re.compile(r'(\d+\.\d+)')
+    pattern_2 = re.compile(r'(\d+\.\d+\.\d+)')
+    pattern_3 = re.compile(r'(\d+\.\d+\.\d+\.\d+)')
+
+    # Check for chapter pattern
+    if chapter_pattern.search(paragraph.text):
+        replace_with_formatted_run(paragraph, paragraph.text, font_size=48)
+
+    # Check for pattern 3
+    elif pattern_3.search(paragraph.text):
+        replace_with_formatted_run(paragraph, paragraph.text, font_size=16)
+
+    # Check for pattern 2
+    elif pattern_2.search(paragraph.text):
+        replace_with_formatted_run(paragraph, paragraph.text, font_size=20)
+
+    # Check for pattern 1
+    elif pattern_1.search(paragraph.text):
+        replace_with_formatted_run(paragraph, paragraph.text, font_size=26)
+
+def replace_with_formatted_run(paragraph, text, font_size):
+    # Clear existing runs
+    for run in paragraph.runs:
+        run.clear()
+
+    # Add a new run with the desired formatting
+    run = paragraph.add_run(text)
+    run.bold = True
+    run.font.size = docx.shared.Pt(font_size)
+
+if __name__ == "__main__":
+    input_file_path = 'input.docx'  # Provide your input file path
+    output_file_path = 'output.docx'  # Provide your output file path
+
+    # Load the DOCX file
+    doc = docx.Document(input_file_path)
+
+    # Process each paragraph
+    for paragraph in doc.paragraphs:
+        process_paragraph(paragraph)
+
+    # Save the modified document
+    doc.save(output_file_path)

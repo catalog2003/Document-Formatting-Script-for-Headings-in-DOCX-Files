@@ -1,3 +1,9 @@
+
+![Screenshot 2023-11-23 131501](https://github.com/catalog2003/Document-Formatting-Script-for-Headings-in-DOCX-Files/assets/83747762/1833466a-21fc-49ef-b2c4-7738cc749021)
+
+![Screenshot 2023-11-23 131540](https://github.com/catalog2003/Document-Formatting-Script-for-Headings-in-DOCX-Files/assets/83747762/3ce35019-82fb-4665-992c-4aa1dae0cfc7)
+
+
 # Document-Formatting-Script-for-Headings-in-DOCX-Files
 This Python script utilizes the docx library to process a DOCX file, specifically targeting paragraphs that resemble chapter headings and numbered patterns. The script employs regular expressions to identify different patterns in the text, such as chapters and numbered sections. 
 
